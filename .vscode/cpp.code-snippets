@@ -1,0 +1,78 @@
+{
+	"Head file template": {
+		"prefix": "hft",
+		"body": [
+			"// Copyright 2022 Source Speace Studio",
+			"// License(GPLv3.0)",
+			"// Author: Kkasi",
+			"// This is ${1:...}",
+			"",
+			"#ifndef ${2:${WORKSPACE_NAME/(.*)/${1:/upcase}/}}_${3:SUBPROJECT}_${4:${TM_FILENAME_BASE/(.*)/${1:/upcase}/}}_H_",
+			"#define $2_$3_$4_H_",
+			"",
+			"namespace ${5|compiler,virtualMachine|} {",
+			"",
+			"$0",
+			"",
+			"} // namespace ${5}",
+			"#endif // $2_$3_$4_H_"
+		],
+		"description": "The head file template"
+	},
+	"Head file class": {
+		"prefix": "hclass",
+		"body": [
+			"class ${1:${TM_FILENAME_BASE/(^.)/${1:/upcase}/}} {",
+			"private:",
+			"\t/* value */",
+			"protected:",
+			"\t/* method */",
+			"public:",
+			"\t$1();",
+			"\t~$1();",
+			"};"
+		],
+		"description": "Head file class"
+	},
+	"Source file template": {
+		"prefix": "sft",
+		"body": [
+			"// Copyright 2022 Source Speace Studio",
+			"// License(GPLv3.0)",
+			"// Author: Kkasi",
+			"// This is ${1:...}",
+			"namespace ${2|compiler,virtualMachine|} {",
+			"",
+			"${0:code}",
+			"",
+			"} // namespace ${2}"
+		],
+		"description": "The source file template"
+	},
+	"Source file class": {
+		"prefix": "sclass",
+		"body": [
+			"${1:${TM_FILENAME_BASE/(^.)/${1:/upcase}/}}::$1()",
+			"\t: ${2:varName}(${3:value}) {",
+			"\t${4:...}",
+			"}",
+			"$1::~$1() {",
+			"\t${5:...}",
+			"}"
+		],
+		"description": "Head file class"
+	},
+	"Make exception": {
+		"prefix": "quexcept",
+		"body": [
+			"printf(\"${1:...} Error:\\n\"\\\n ${2:what_error_sub_msg},${3:varName});",
+			"exit(${4:exit_code});"
+		],
+		"description": "Head file class"
+	},
+	"What error sub msg": {
+		"prefix": "quexceptSubMsg",
+		"body": "\"\\t${2:what_error}\\n\"\\",
+		"description": "What error sub msg"
+	}
+}
